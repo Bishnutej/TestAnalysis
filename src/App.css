@@ -25,6 +25,7 @@ body {
   max-width: 2000px; /* Increased width */
   width: 100%;
   text-align: left;
+  margin-top: 20px;
 }
 
 .form-container, .chart-container {
