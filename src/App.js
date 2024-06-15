@@ -9,11 +9,11 @@ function App() {
   const [formState, setFormState] = useState({
     platform: 'Platform 1',
     testSeries: 'Series 1',
-    testNumber: 1,
-    attemptNumber: 1,
-    quantitative: 0,
-    reasoning: 0,
-    english: 0
+    testNumber: '',
+    attemptNumber: '',
+    quantitative: '',
+    reasoning: '',
+    english: ''
   });
 
   const handleChange = (e) => {
@@ -119,6 +119,70 @@ function App() {
 
   const chartData = updateChart();
 
+  const updateReattemptChart = () => {
+    const { platform, testSeries } = formState;
+
+    if (!testData[platform] || !testData[platform][testSeries]) return;
+
+    const seriesData = testData[platform][testSeries];
+    const testNumbers = Object.keys(seriesData).sort((a, b) => a - b);
+    const reattemptQuantitativeScores = [];
+    const reattemptReasoningScores = [];
+    const reattemptEnglishScores = [];
+    const reattemptTotalScores = [];
+
+    testNumbers.forEach(testNumber => {
+      const attempts = Object.values(seriesData[testNumber]);
+
+      // Assuming reattempts are stored separately or marked in the data structure
+      for (let attempt of attempts) {
+        // Example logic to identify reattempts (you may need to adjust this based on your data structure)
+        if (attempt.reattempt) {
+          reattemptQuantitativeScores.push(attempt.quantitative);
+          reattemptReasoningScores.push(attempt.reasoning);
+          reattemptEnglishScores.push(attempt.english);
+          reattemptTotalScores.push(attempt.totalScore);
+        }
+      }
+    });
+
+    return {
+      labels: testNumbers,
+      datasets: [
+        {
+          label: 'Reattempt Quantitative',
+          data: reattemptQuantitativeScores,
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          fill: false
+        },
+        {
+          label: 'Reattempt Reasoning',
+          data: reattemptReasoningScores,
+          borderColor: 'rgb(75, 192, 192)',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          fill: false
+        },
+        {
+          label: 'Reattempt English',
+          data: reattemptEnglishScores,
+          borderColor: 'rgb(255, 206, 86)',
+          backgroundColor: 'rgba(255, 206, 86, 0.2)',
+          fill: false
+        },
+        {
+          label: 'Reattempt Total Score',
+          data: reattemptTotalScores,
+          borderColor: 'rgb(153, 102, 255)',
+          backgroundColor: 'rgba(153, 102, 255, 0.2)',
+          fill: false
+        }
+      ]
+    };
+  };
+
+  const reattemptChartData = updateReattemptChart();
+
   return (
     <div className="App">
       <h1>Test Series Analysis</h1>
@@ -178,10 +242,12 @@ function App() {
         <div className="chart-container">
           {chartData && <Line data={chartData} />}
         </div>
+        <div className="chart-container">
+          {reattemptChartData && <Line data={reattemptChartData} />}
+        </div>
       </div>
     </div>
   );
-  
 }
 
 export default App;
