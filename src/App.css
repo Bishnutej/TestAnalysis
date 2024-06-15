@@ -1,24 +1,28 @@
 /* App.css */
 body {
-  background-color: #f4f4f9;
+  background-image: url('/images/background.jpg'); /* Adjust the path if necessary */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh;
   color: #333;
 }
 
 .container {
-  background: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: row;
   padding: 20px;
-  max-width: 800px; /* Increased width */
+  max-width: 2000px; /* Increased width */
   width: 100%;
   text-align: left;
 }
