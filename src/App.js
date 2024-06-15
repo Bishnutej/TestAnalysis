@@ -179,8 +179,12 @@ function App() {
           {chartData && <Line data={chartData} />}
         </div>
       </div>
+      <footer className="footer">
+        <p>&copy; 2024 Test Analysis. All rights reserved.</p>
+      </footer>
     </div>
   );
+  
 }
 
 export default App;
