@@ -28,7 +28,7 @@ body {
 }
 
 .chart-container {
-  margin-left: 90px; /* Increased margin */
+  margin-left: 20px; /* Increased margin */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,7 +57,7 @@ input, select, button {
   margin-bottom: 10px;
   border-radius: 4px;
   border: 1px solid #ccc;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 button {
