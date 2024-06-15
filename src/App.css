@@ -28,7 +28,7 @@ body {
 }
 
 .chart-container {
-  margin-left: 200px; /* Increased margin */
+  margin-left: 100px; /* Increased margin */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,11 +73,11 @@ button:hover {
 }
 
 canvas {
-  width: 1200px; /* Increased width */
-  height: 800px; /* Increased height */
+  width: 900px; /* Increased width */
+  height: 600px; /* Increased height */
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
   .container {
     flex-direction: column;
   }
